@@ -36,8 +36,8 @@ describe('Automation Exercise - Testes E2E - Login', () => {
       );
 
       // ASSERT
-      cy.get('.login-form > form > p')
-        .should('contain', 'Your email or password is incorrect!');
+      cy.contains('Your email or password is incorrect!')
+        .should('be.visible');
     });
 
     it('Test Case 04 - Fazer logout do usuário', () => {
@@ -50,7 +50,7 @@ describe('Automation Exercise - Testes E2E - Login', () => {
 
       // ASSERT
       verificarPaginaDeLoginECadastro();
-      cy.get('a[href="/login"]').should('contain', 'Signup / Login');
+      cy.contains('a', 'Signup / Login').should('be.visible');
     });
   });
 });

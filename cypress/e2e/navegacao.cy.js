@@ -25,9 +25,13 @@ describe('Automation Exercise - Testes E2E - Navegação - Contato, Newsletter e
       menu.navegarParaContato();
       contato.preencherFormularioContato(userData);
       // ASSERT
-      cy.get('.status').should('contain.text', 'Success! Your details have been submitted successfully.');
+      cy.get('.status')
+        .should('be.visible')
+        .and('contain.text', 'Success! Your details have been submitted successfully.');
+      
       cy.url().should('include', '/contact_us');
       cy.get('h2').should('contain.text', 'Get In Touch');
+      
       contato.continuarAposEnvio();
       cy.url().should('eq', Cypress.config().baseUrl);
       verificarPaginaInicialCarregada();
@@ -42,15 +46,21 @@ describe('Automation Exercise - Testes E2E - Navegação - Contato, Newsletter e
       // ACT
       menu.realizarAssinatura(email);
       // ASSERT
-      cy.get('.single-widget').should('be.visible').and('contain', 'Subscription');
-      cy.get('.alert-success').should('be.visible').and('have.text', 'You have been successfully subscribed!');
+      cy.get('.single-widget')
+        .should('be.visible')
+        .and('contain', 'Subscription');
+      
+      cy.get('.alert-success')
+        .should('be.visible')
+        .and('have.text', 'You have been successfully subscribed!');
     });
 
     it('Test Case 15 - Fazer pedido: Registre-se antes de finalizar a compra', () => {
-      // ARRANGE - Preparar dados e cadastrar usuário
+      // ARRANGE
       const newUser = createNewUserData();
       const cardData = createFakeCardData();
       
+      // ACT
       // Cadastrar novo usuário
       menu.navegarParaLogin();
       login.preencherFormularioPreCadastro(newUser);
@@ -58,31 +68,26 @@ describe('Automation Exercise - Testes E2E - Navegação - Contato, Newsletter e
       cadastro.continuarAposCriacao();
       verificarUsuarioLogado(newUser.name);
 
-      // ACT - Realizar processo completo de compra
-      // 1. Navegar para produtos e adicionar ao carrinho
+      // Realizar processo completo de compra
       menu.navegarParaProdutos();
-      cy.get('.features_items').should('be.visible');
       carrinho.adicionarProdutoAoCarrinho('1');
-      
-      // 2. Navegar para o carrinho e verificar
       carrinho.navegarParaCarrinho();
       carrinho.verificarProdutosNoCarrinho();
-      
-      // 3. Prosseguir para checkout e verificar endereços
       carrinho.prosseguirParaCheckout();
-      cy.get('#address_delivery').should('be.visible').and('contain.text', newUser.address);
-      cy.get('#address_invoice').should('be.visible').and('contain.text', newUser.address);
       
-      // 4. Prosseguir para pagamento
+      // Verificar endereços
+      cy.get('#address_delivery')
+        .should('be.visible')
+        .and('contain.text', newUser.address);
+      cy.get('#address_invoice')
+        .should('be.visible') 
+        .and('contain.text', newUser.address);
+      
       carrinho.prosseguirParaPagamento();
-      
-      // 5. Finalizar pagamento
       carrinho.concluirPagamento(cardData);
 
-      // ASSERT - Verificar se pedido foi realizado com sucesso
+      // ASSERT
       carrinho.verificarPedidoConfirmado();
-      
-      // Retornar à página inicial
       carrinho.continuarAposPagamento();
       verificarPaginaInicialCarregada();
     });

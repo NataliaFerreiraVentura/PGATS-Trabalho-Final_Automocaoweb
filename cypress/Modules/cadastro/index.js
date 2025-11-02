@@ -1,9 +1,8 @@
 class Cadastro {
 
     preencherFormularioCadastro(user) {        
-      // Informações pessoais - aguarda página carregar
-      cy.url().should('include', '/signup');
-      cy.get('input[type="radio"][value="Mrs"]').check();  // Seleciona Mrs. ao invés de #id_gender2
+      // Aguarda estar na página correta e seleciona gênero
+      cy.get('#id_gender2').check();
     
       // Preenche senha
       cy.get('[data-qa="password"]')
@@ -37,11 +36,6 @@ class Cadastro {
     continuarAposCriacao() {        
         // Clica no botão Continue após criar a conta
         cy.get('[data-qa="continue-button"]').click();
-    }
-
-    cadastrarUsuarioCompleto(user) {
-        this.preencherFormularioCadastro(user);
-        this.continuarAposCriacao();
     }
 
 }

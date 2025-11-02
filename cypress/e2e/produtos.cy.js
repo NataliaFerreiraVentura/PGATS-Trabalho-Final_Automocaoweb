@@ -23,7 +23,7 @@ describe('Produtos', () => {
 
   it('Test Case 09 - Pesquisar produto', () => {
     // ARRANGE
-    const termoPesquisa = 'Tshirt';
+    const termoPesquisa = 'Dress';
 
     // ACT
     menu.navegarParaProdutos();

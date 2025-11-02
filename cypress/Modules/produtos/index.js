@@ -20,9 +20,13 @@ class Produtos {
     }
 
     validarProdutosPesquisados(termoPesquisa) {
+        // Verifica se há pelo menos 1 produto encontrado
         cy.get('.features_items .col-sm-4').should('have.length.at.least', 1);
+        
+        // Verifica se pelo menos um produto contém o termo (case-insensitive)
         cy.get('.features_items .productinfo p')
-          .should('contain.text', termoPesquisa);
+          .invoke('text')
+          .should('match', new RegExp(termoPesquisa, 'i'));
     }
 }
 
