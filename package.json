@@ -1,0 +1,31 @@
+{
+  "name": "pgats_trabalhofinal_automocaoweb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run",
+    "test:open": "cypress open",
+    "test:headless": "cypress run --headless",
+    "test:chrome": "cypress run --browser chrome",
+    "test:firefox": "cypress run --browser firefox",
+    "test:edge": "cypress run --browser edge",
+    "test:report": "cypress run --reporter cypress-mochawesome-reporter",
+    "test:spec": "cypress run --spec",
+    "clean:reports": "if exist cypress\\reports rmdir /s /q cypress\\reports",
+    "clean:screenshots": "if exist cypress\\screenshots rmdir /s /q cypress\\screenshots",
+    "clean:videos": "if exist cypress\\videos rmdir /s /q cypress\\videos",
+    "clean:all": "npm run clean:reports && npm run clean:screenshots && npm run clean:videos",
+    "cypress:info": "cypress info",
+    "cypress:version": "cypress version"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@faker-js/faker": "^10.1.0",
+    "cypress": "^13.7.3",
+    "cypress-mochawesome-reporter": "^4.0.2"
+  }
+}
