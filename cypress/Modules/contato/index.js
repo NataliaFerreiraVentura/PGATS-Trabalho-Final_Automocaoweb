@@ -18,7 +18,8 @@ class Contato {
     }
 
     continuarAposEnvio() {
-      cy.get('a[class="btn btn-success"]').click();
+      // Boa prática: Usar texto visível ao invés de classes CSS
+      cy.contains('a', 'Home').click();
     }
 }
 

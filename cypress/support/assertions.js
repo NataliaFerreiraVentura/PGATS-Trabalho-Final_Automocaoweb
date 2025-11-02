@@ -1,16 +1,23 @@
 // Verifica se o usuário está logado com sucesso
 export function verificarUsuarioLogado(nome) {
+  // Boa prática: Usar texto visível
   cy.contains(`Logged in as ${nome}`).should('be.visible');
-  cy.get('a[href="/logout"]').should('be.visible');
+  cy.contains('a', 'Logout').should('be.visible');
 }
 
 // Verifica se está na página de login e cadastro
 export function verificarFormularioDeLogin() {
-  cy.get('.login-form').should('be.visible').contains('Login to your account');
+  // Boa prática: Usar contexto semântico
+  cy.get('.login-form').should('be.visible').within(() => {
+    cy.contains('Login to your account').should('be.visible');
+  });
 }
 
 export function verificarFormularioDeCadastro() {
-  cy.get('.signup-form h2').should('contain', 'New User Signup!');
+  // Boa prática: Usar contexto semântico
+  cy.get('.signup-form').should('be.visible').within(() => {
+    cy.contains('New User Signup!').should('be.visible');
+  });
 }
 
 export function verificarPaginaDeLoginECadastro() {
@@ -21,7 +28,8 @@ export function verificarPaginaDeLoginECadastro() {
 
 // Verifica se a pagina inicial foi carregada corretamente
 export function verificarPaginaInicialCarregada() {
-  cy.get('img[alt="Website for automation practice"]').should('be.visible');
+  // Boa prática: Usar atributo semântico
+  cy.get('img[alt*="automation practice" i]').should('be.visible');
   cy.title().should('include', 'Automation Exercise');
   cy.url().should('eq', Cypress.config().baseUrl);
 }

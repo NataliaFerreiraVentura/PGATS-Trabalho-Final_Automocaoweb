@@ -19,14 +19,14 @@ class Cadastro {
       cy.get('input[type=checkbox]#newsletter').check();
       cy.get('input[type=checkbox]#optin').check();
     
-      // Informações do endereço
+      // Informações do endereço - Padronizando para data-qa quando disponível
       cy.get('[data-qa="first_name"]').clear().type(user.firstName);
-      cy.get('input#last_name').clear().type(user.lastName);
-      cy.get('input#company').clear().type(user.company);
-      cy.get('input#address1').clear().type(user.address);
-      cy.get('select#country').select(user.country);
-      cy.get('input#city').clear().type(user.city);
-      cy.get('input#state').clear().type(user.state);
+      cy.get('[data-qa="last_name"], input#last_name').clear().type(user.lastName);
+      cy.get('[data-qa="company"], input#company').clear().type(user.company);
+      cy.get('[data-qa="address"], input#address1').clear().type(user.address);
+      cy.get('[data-qa="country"], select#country').select(user.country);
+      cy.get('[data-qa="city"], input#city').clear().type(user.city);
+      cy.get('[data-qa="state"], input#state').clear().type(user.state);
       cy.get('[data-qa="zipcode"]').clear().type(user.zipcode);
       cy.get('[data-qa="mobile_number"]').clear().type(user.mobile);
     

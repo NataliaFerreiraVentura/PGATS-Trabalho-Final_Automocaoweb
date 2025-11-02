@@ -25,12 +25,14 @@ class Carrinho {
     }
 
     prosseguirParaCheckout() {
-        cy.get('.btn.btn-default.check_out').click();
+        // Boa prática: Usar texto visível
+        cy.contains('a', 'Proceed To Checkout').click();
         cy.url().should('include', '/checkout');
     }
 
     prosseguirParaPagamento() {
-        cy.get('a[href="/payment"]').click();
+        // Boa prática: Usar texto visível
+        cy.contains('a', 'Place Order').click();
         cy.url().should('include', '/payment');
     }
     
