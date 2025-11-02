@@ -1,242 +1,230 @@
-# 🚀 PGATS - Trabalho Final - Automação Web
+# 🎓 Projeto Final — Automação de Testes na Interface Web com Cypress
 
-## 📋 Descrição do Projeto
+## 📘 Visão Geral
 
-Projeto de automação de testes E2E desenvolvido como trabalho final da pós-graduação em **Automação de Testes de Software**. O projeto utiliza **Cypress** para automatizar testes no site [Automation Exercise](https://automationexercise.com/), aplicando as melhores práticas de automação e padrões de desenvolvimento.
+Este repositório apresenta o projeto final da disciplina "Automação de Testes na Camada de Interface - Web", parte do curso de pós-graduação em Automação de Testes de Software. A proposta consiste na construção de uma suíte robusta de testes automatizados E2E utilizando Cypress, aplicada ao site [Automation Exercise](https://automationexercise.com/).
 
-## 🎯 Objetivos
+## 🎯 Objetivos Acadêmicos
 
-- ✅ Implementar testes automatizados E2E
-- ✅ Aplicar padrões de boas práticas (AAA, Modularização)
-- ✅ Gerar relatórios profissionais de execução
-- ✅ Demonstrar conhecimento em automação de testes web
+### **Objetivo Geral**
+
+Desenvolver uma solução prática e escalável de automação de testes web, evidenciando domínio técnico dos conceitos abordados na disciplina.
+
+### **Objetivos Específicos**
+
+- ✅ Implementar testes E2E com boas práticas recomendadas
+- ✅ Aplicar o padrão AAA (Arrange, Act, Assert)
+- ✅ Modularizar o código para reutilização e manutenção
+- ✅ Utilizar dados dinâmicos para testes independentes
+- ✅ Gerar relatórios automatizados com métricas de qualidade
+- ✅ Demonstrar proficiência em automação web moderna
 
 ## 🛠️ Tecnologias Utilizadas
 
-| Tecnologia      | Versão  | Descrição                  |
-| --------------- | ------- | -------------------------- |
-| **Cypress**     | ^13.7.3 | Framework de testes E2E    |
-| **JavaScript**  | ES6+    | Linguagem de programação   |
-| **Faker.js**    | ^10.1.0 | Geração de dados dinâmicos |
-| **Mochawesome** | ^4.0.2  | Gerador de relatórios HTML |
+| Ferramenta      | Versão  | Finalidade                             |
+| --------------- | ------- | -------------------------------------- |
+| **Cypress**     | ^13.7.3 | Framework de testes E2E                |
+| **JavaScript**  | ES6+    | Linguagem de desenvolvimento           |
+| **Faker.js**    | ^10.1.0 | Geração de dados dinâmicos             |
+| **Mochawesome** | ^4.0.2  | Relatórios HTML com evidências visuais |
 
 ## 🏗️ Estrutura do Projeto
 
-```
+```bash
 📦 PGATS_TrabalhoFinal_AutomocaoWEB
-├── 📁 cypress/
-│   ├── 📁 e2e/
-│   │   └── automation-exercise.cy.js    # Testes principais
-│   ├── 📁 Modules/
-│   │   ├── 📁 login/                    # Módulo de login/signup
-│   │   ├── 📁 cadastro/                 # Módulo de cadastro
-│   │   ├── 📁 menu/                     # Módulo de navegação/menu
-│   │   ├── 📁 carrinho/                 # Módulo de carrinho
-│   │   └── 📁 contato/                  # Módulo de contato
-│   ├── 📁 fixtures/
-│   │   └── userData.json                # Dados de teste
-│   ├── 📁 support/
-│   │   ├── commands.js                  # Comandos customizados
-│   │   ├── e2e.js                       # Configurações globais
-│   │   └── helpers.js                   # Funções auxiliares
-│   └── 📁 reports/                      # Relatórios gerados
-├── cypress.config.js                    # Configurações do Cypress
-├── package.json                         # Dependências do projeto
-└── README.md                           # Documentação do projeto
+├── cypress/
+│   ├── e2e/                     # Casos de teste principais
+│   ├── Modules/                 # Módulos funcionais (login, cadastro, etc.)
+│   ├── fixtures/                # Dados estáticos de teste
+│   ├── support/                 # Comandos e helpers reutilizáveis
+│   └── reports/                 # Relatórios gerados
+├── cypress.config.js           # Configuração do Cypress
+├── package.json                # Dependências do projeto
+└── README.md                   # Documentação técnica
 ```
 
-## 🎯 Casos de Teste Implementados
+## 🧪 Casos de Teste Implementados
 
-### **Test Case 01 - Cadastrar Usuário**
+A suíte contempla **10 cenários E2E** que simulam funcionalidades essenciais de um e-commerce:
 
-- **Objetivo**: Validar criação de conta com sucesso
-- **Passos**:
-  1. Acessar página inicial
-  2. Navegar para cadastro
-  3. Preencher dados de pré-cadastro
-  4. Preencher dados pessoais completos
-  5. Criar conta
-  6. Validar conta criada e login automático
+### 🔐 **Autenticação**
 
-### **Test Case 02 - Login do Usuário com E-mail e Senha Corretos**
+- **TC01:** Cadastro de novo usuário
+- **TC02:** Login com credenciais válidas
+- **TC03:** Login com credenciais inválidas
+- **TC04:** Logout
+- **TC05:** Cadastro com email já existente
 
-- **Objetivo**: Validar login com credenciais válidas
-- **Passos**:
-  1. Acessar página de login
-  2. Inserir credenciais válidas
-  3. Validar login bem-sucedido
+### 🛒 **Funcionalidades de E-commerce**
 
-### **Test Case 03 - Login do Usuário com E-mail e Senha Incorretos**
+- **TC06:** Envio de formulário de contato
+- **TC08:** Visualização de detalhes do produto
+- **TC09:** Pesquisa de produtos
+- **TC10:** Assinatura de newsletter
+- **TC15:** Fluxo completo de compra (cadastro → produto → carrinho → checkout → pagamento)
 
-- **Objetivo**: Validar mensagem de erro para credenciais inválidas
-- **Passos**:
-  1. Acessar página de login
-  2. Inserir credenciais inválidas
-  3. Validar mensagem de erro
+## 📐 Boas Práticas Aplicadas
 
-### **Test Case 04 - Fazer Logout do Usuário**
+### **🎯 1. Padrão AAA (Arrange, Act, Assert)**
 
-- **Objetivo**: Validar funcionalidade de logout
-- **Passos**:
-  1. Fazer login com usuário válido
-  2. Executar logout
-  3. Validar redirecionamento para página de login
-
-
-## 📊 Padrões e Práticas Aplicados
-
-### **🎯 Padrão AAA (Arrange, Act, Assert)**
+_Conceito fundamental aplicado em 100% dos casos de teste_
 
 ```javascript
-// ARRANGE - Preparar dados
-const newUser = createNewUserData();
+it("Test Case 01 - Cadastrar usuário", () => {
+  // ARRANGE - Preparação dos dados de teste
+  const newUser = createNewUserData();
 
-// ACT - Executar ações
-login.preencherFormularioPreCadastro(newUser);
-cadastro.cadastrarUsuarioCompleto(newUser);
+  // ACT - Execução das ações do usuário
+  login.preencherFormularioPreCadastro(newUser);
+  cadastro.preencherFormularioCadastro(newUser);
 
-// ASSERT - Verificar resultados
-cy.url().should("eq", Cypress.config().baseUrl);
-cy.contains(`Logged in as ${newUser.name}`).should("be.visible");
+  // ASSERT - Validação dos resultados esperados
+  cy.get('[data-qa="account-created"]')
+    .should("be.visible")
+    .and("contain.text", "Account Created!");
+  verificarUsuarioLogado(newUser.name);
+});
 ```
 
-### **🏗️ Modularização**
+### **🏗️ 2. Modularização de Código**
 
-- **Separação por responsabilidade**: Cada módulo tem uma função específica
-- **Reutilização**: Módulos podem ser usados em diferentes testes
-- **Manutenibilidade**: Mudanças centralizadas por funcionalidade
+_Arquitetura orientada à manutenibilidade e reutilização_
 
-### **📊 Geração de Dados Dinâmicos**
+| Módulo       | Responsabilidade     | Benefício                        |
+| ------------ | -------------------- | -------------------------------- |
+| **Login**    | Autenticação         | Centraliza lógica de login       |
+| **Cadastro** | Registro de usuários | Reutilização em múltiplos fluxos |
+| **Menu**     | Navegação            | Consistência na navegação        |
+| **Produtos** | Catálogo e busca     | Isolamento de funcionalidades    |
+| **Carrinho** | E-commerce           | Fluxo de compra organizado       |
+
+### **🎲 3. Dados Dinâmicos e Fixtures**
+
+_Eliminação de dependências entre testes_
 
 ```javascript
-// Uso do Faker.js para dados únicos
-const newUser = {
-  name: faker.person.firstName(),
-  email: faker.internet.email(),
-  password: faker.internet.password(),
-};
+// Geração dinâmica com Faker.js
+function createNewUserData() {
+  return {
+    name: fakerPT_BR.person.fullName(),
+    email: `qatester.${Date.now()}@teste.com`,
+    password: "Teste@123",
+    birthDay: faker.date.birthdate().getDate().toString(),
+  };
+}
+
+// Dados estáticos via fixtures
+cy.fixture("userData.json").then((userData) => {
+  login.preencherFormularioDeLogin(
+    userData.validUser.email,
+    userData.validUser.password
+  );
+});
 ```
 
-## 🚀 Como Executar
+### **🎯 4. Seletores Robustos e Boas Práticas**
+
+_Hierarquia de confiabilidade aplicada_
+
+```javascript
+// 🥇 Prioridade 1: data-qa attributes (mais confiável)
+cy.get('[data-qa="login-button"]').click();
+
+// 🥈 Prioridade 2: Texto visível (semântico)
+cy.contains("View Product").click();
+
+// 🥉 Prioridade 3: IDs únicos (quando necessário)
+cy.get("#id_gender2").check();
+```
+
+### **🔄 5. Hooks e Reutilização**
+
+_Setup e teardown automatizados_
+
+```javascript
+// Setup global para todos os testes
+beforeEach(() => {
+  cy.visit("/");
+  verificarPaginaInicialCarregada();
+});
+
+// Funções auxiliares reutilizáveis
+export function verificarUsuarioLogado(nome) {
+  cy.contains(`Logged in as ${nome}`).should("be.visible");
+  cy.contains("a", "Logout").should("be.visible");
+}
+```
+
+## ⚙️ Execução dos Testes
 
 ### **Pré-requisitos**
 
-- Node.js (versão 16+)
-- npm ou yarn
+- **Node.js** v18+
+- **NPM** v8+
+- **Git**
 
-### **Instalação**
+### **Setup**
 
 ```bash
-# 1. Clonar o repositório
 git clone https://github.com/NataliaFerreiraVentura/PGATS-Trabalho-Final_Automocaoweb.git
-
-# 2. Entrar no diretório
 cd PGATS-Trabalho-Final_Automocaoweb
-
-# 3. Instalar dependências
 npm install
+npx cypress verify
 ```
 
-### **Execução dos Testes**
+### **Execução**
 
 ```bash
-# Abrir interface do Cypress
-npm run test:open
+# Modo headless (recomendado para avaliação)
+npm run cy:run
 
-# Executar testes em modo headless
-npm run test
+# Modo interativo (debug e análise visual)
+npm run cy:open
 
-# Executar com relatórios
-npm run test:report
-
-# Executar em navegador específico
-npm run test:chrome
-npm run test:firefox
-npm run test:edge
+# Execução por módulo
+npx cypress run --spec "cypress/e2e/login.cy.js"
 ```
 
-### **Scripts Disponíveis**
+## 📊 Relatórios e Evidências
 
-| Script                 | Descrição                              |
-| ---------------------- | -------------------------------------- |
-| `npm run test`         | Executa testes em modo headless        |
-| `npm run test:open`    | Abre interface gráfica do Cypress      |
-| `npm run test:report`  | Executa testes e gera relatórios       |
-| `npm run test:chrome`  | Executa no Chrome                      |
-| `npm run test:firefox` | Executa no Firefox                     |
-| `npm run clean:all`    | Limpa relatórios, screenshots e vídeos |
+Relatórios HTML gerados com **Mochawesome**, incluindo:
 
-## 📊 Relatórios
+- Taxa de sucesso dos testes
+- Tempo de execução
+- Screenshots automáticos
+- Vídeos dos fluxos
+- Logs detalhados
 
-Os relatórios são gerados automaticamente na pasta `cypress/reports/` com:
+**Localização:**
 
-- ✅ **Dashboard visual** com estatísticas
-- ✅ **Screenshots** automáticos em falhas
-- ✅ **Logs detalhados** de cada passo
-- ✅ **Tempo de execução** por teste
-- ✅ **Status colorido** (Pass/Fail)
+```
+📁 cypress/reports/html/
+📁 cypress/screenshots/
+📁 cypress/videos/
+```
 
-## 🏆 Funcionalidades Implementadas
+## 🚀 Integração Contínua com GitHub Actions
 
-### **✅ Automação Robusta**
+**Arquivo:** `.github/workflows/cypress_E2E_Tests.yml`
 
-- Testes estáveis e confiáveis
-- Tratamento de elementos dinâmicos
-- Waits inteligentes
+**Funcionalidades:**
 
-### **✅ Dados Dinâmicos**
+- Execução automática dos testes em push/pull request
+- Geração de relatórios e evidências
+- Ambiente padronizado com Node.js 20
+- Cache inteligente e timeout otimizado
 
-- Geração automática com Faker.js
-- Evita conflitos entre execuções
-- Testes sempre com dados únicos
+## 🏆 Competências Demonstradas
 
-### **✅ Relatórios Profissionais**
+- **Automação web** com Cypress
+- **Programação JavaScript** moderna
+- **Estratégias de teste** e validação
+- **DevOps básico** com CI/CD
+- **Documentação técnica** clara e objetiva
 
-- HTML com visual atrativo
-- Screenshots em falhas
-- Métricas detalhadas
+## 👩‍🎓 Informações Acadêmicas
 
-### **✅ Configuração Flexível**
-
-- BaseUrl configurável
-- Múltiplos ambientes
-- Scripts otimizados
-
-## 📚 Documentação Adicional
-
-- 📖 [Padrão AAA Implementado](PADRÃO-AAA-COM-ASSERÇÕES.md)
-- 🏗️ [Guia de Modularização](MODULARIZAÇÃO-IMPLEMENTADA.md)
-- 📊 [Estrutura com BeforeEach](ESTRUTURA-COMPLETA-BEFOREEACH.md)
-- ⚖️ [AAA Rigoroso vs Adaptado](AAA-RIGOROSO-VS-ADAPTADO.md)
-
-## 👨‍💻 Autor
-
-**Natália Ferreira Ventura**
-
-- 🎓 Pós-graduanda em Automação de Testes de Software
-- 🚀 Especialista em Quality Assurance
-- � [GitHub](https://github.com/NataliaFerreiraVentura)
-
-## 📄 Licença
-
-Este projeto foi desenvolvido para fins acadêmicos como parte do trabalho final da pós-graduação em Automação de Testes de Software.
-
----
-
-## 🏁 Status do Projeto
-
-✅ **Concluído** - Trabalho Final da Pós-graduação
-
-### **Checklist de Entrega:**
-
-- [x] Implementação de testes E2E
-- [x] Aplicação do padrão AAA
-- [x] Modularização do código
-- [x] Geração de dados dinâmicos
-- [x] Relatórios automatizados
-- [x] Documentação completa
-- [x] Boas práticas de automação
-
----
-
-**🎯 Projeto desenvolvido com foco em qualidade, boas práticas e demonstração de conhecimento técnico em automação de testes web.**
+**Autora:** Natália Ferreira Ventura  
+**Disciplina:** Automação de Testes na Camada de Interface - Web  
+**Curso:** Pós-graduação em Automação de Testes de Software  
+**GitHub:** [NataliaFerreiraVentura](https://github.com/NataliaFerreiraVentura)
